@@ -7,9 +7,13 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     const { username, password } = req.body;
     const user = await adminSchema.findOne({ username: username });
-    const isPasswordVaild = await bcrypt.compare(password, user.password)
-    if (user && isPasswordVaild) {
-        adminLogin(req, res);
+    if(user){
+        const isPassword = await bcrypt.compare(password, user.password)
+        if (user && isPassword) {
+            adminLogin(req, res)
+        }else{
+            userLogin(req, res)
+        }
     }
     else { userLogin(req, res) };
 })

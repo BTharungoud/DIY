@@ -19,23 +19,6 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     padding-left: 60px;
-
-  }
-  
-  /* h1 {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 32px;
-    color: #F8EBE3;
-
-  } */
-  
-  h4 {
-    color: #F8EBE3;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 16px;
   }
   
   .item {

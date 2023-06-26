@@ -8,7 +8,8 @@ const SECRET = process.env.SECRET;
 exports.addAdmin = async (req, res) => {
     try {
         const {username,password,securityCode} = req.body;
-        if (await adminSchema.findOne( {username:username} )) {
+        if(!username||!password){res.send("Enter all fields")}
+       else  if (await adminSchema.findOne( {username:username} )) {
             res.send("admin already exsit plz go for login")
         }
         else if (req.body.securityCode != SCODE) { res.send("plz enter Admin code(securityCode) correctly") }
@@ -32,7 +33,8 @@ exports.addAdmin = async (req, res) => {
 exports.addUser = async (req, res) => {
     try {
         const {username,password} = req.body;
-        if(await userSchema.findOne({username:username})) {
+        if(!username||!password){res.send("Enter all fields")}
+        else if(await userSchema.findOne({username:username})) {
             res.send("User already exsit plz go for login")
         }
         else {

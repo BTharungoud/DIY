@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import "./Menupage.css"
+import Navbar from '../Navbar/Navbar';
 const API_BASE = "http://localhost:5000"
+
 export default function Menupage() {
     const [menu, setMenu] = useState([]);
     const [popupActive, setPopupActive] = useState(false);
@@ -71,7 +73,8 @@ export default function Menupage() {
 
 	return (
 		<div className="Menu">
-            <h4>Here is the menu for the day:</h4>
+            <Navbar/>
+            <h4>Here is the Menu,update if required.</h4>
             <div>
             <div className="menu">
                 {menu.map(item => (

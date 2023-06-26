@@ -1,25 +1,3 @@
-// import React, { useState } from "react";
-// import "./Navbar.css"
-
-// function Navbar() {
-
-//   return (
-//     <>
-//     <div className="Navbarparent">
-//     <nav class="Navbar">
-//         <a href='/' class="navbar-link">Home</a>
-//         <a href='/register' class="navbar-link">Signup</a>
-//         <a href='/login' class="navbar-link">Login</a>
-//         <a href='/menuAdmin' class="navbar-link">Menu</a>
-//         <a href="/usermenu" class="navbar-link">Usermenu</a>
-//         <a href="/Userorder" className="navbar-link">Userorder</a>
-//     </nav>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Navbar;
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -37,13 +15,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {  useNavigate } from 'react-router-dom';
+import "./Navbar.css"
 // import logo from '../images/insurance.jpg'
 
 
 const drawerWidth = 240;
-const navItems = ['Menu', 'Orders', 'Logout'];
+const navItems = ['Menu', 'payments', 'Logout'];
 
-function Navbar(props) {
+function UserNavbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -81,10 +60,10 @@ function Navbar(props) {
   const handleitemclick=(item)=>{
     console.log(item)
   if(item=='Menu'){
-    navigate('/menuAdmin')
+    navigate('/usermenu')
   }
-  if(item=='Orders'){
-    navigate('/Odersadmin')
+  if(item=='payments'){
+    navigate('/Userorder')
 
   }
   if(item=='Logout'){
@@ -96,7 +75,7 @@ function Navbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: '#4056A1' }}>
+      <AppBar component="nav" sx={{ backgroundColor: 'transparent' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -148,13 +127,11 @@ function Navbar(props) {
   );
 }
 
-Navbar.propTypes = {
+UserNavbar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
   window: PropTypes.func,
 };
-export default Navbar;
-
-// export default DrawerAppBar;
+export default UserNavbar;

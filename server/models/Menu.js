@@ -13,6 +13,11 @@ const menuSchema = new mongoose.Schema({
         type : Boolean,
         default : true,
         required : true
+    },
+    quantity:{
+        type : Number,
+        default : 0,
+        required : true
     }
 });
 

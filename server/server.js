@@ -6,10 +6,9 @@ const cors = require("cors");
 const loginrouter = require("./routes/Login.js");
 const menurouter = require("./routes/Menu.js");
 const altermenu = require("./routes/Altermenu.js")
-
+const Ordersroute = require("./routes/Orders.js")
 const app = express();
 const PORT = 5000;
-const MONGO = process.env.MONGO;
 app.use(express.json())
 app.use(cors());
 database.once("open",()=>{console.log("pass to Db")});
@@ -20,10 +19,14 @@ app.use("/login",loginrouter);
 app.use("/signup",signuprouter);
 app.use("/menu",menurouter);
 app.use("/menu/admin",altermenu);
-
-app.listen(PORT,async()=>{
-   
+app.use("/orders",Ordersroute);
+app.listen(PORT, async () => {
     console.log(`server is now live on http://localhost:${PORT}`);
-    // await mongoose.connect(MONGO)
-    // console.log("connected to DB.")
-});
+    // try {
+    //   await mongoose.connect(MONGO);
+    //   console.log("connected to DB.");
+    // } catch (error) {
+    //   console.error("Failed to connect to DB:", error);
+    // }
+  });
+  

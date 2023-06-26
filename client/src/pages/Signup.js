@@ -17,22 +17,22 @@ export default function Signup() {
     const [password, setPassword] = useState("");
     const [securityCode, setSecurityCode] = useState(0);
     const API_BASE = "http://localhost:5000";
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const navigate = useNavigate();
     let data ={};
-    let res ;
-    const display = "print the text"
-    const handleClick = () => {
-        setOpen(true);
-    };
+    // let res ;
+    // const display = "print the text"
+    // const handleClick = () => {
+    //     setOpen(true);
+    // };
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
+    // const handleClose = (event, reason) => {
+    //     if (reason === 'clickaway') {
+    //         return;
+    //     }
 
-        setOpen(false);
-    };
+    //     setOpen(false);
+    // };
 
     const handleSubmit = async () => {
         if (!username || !password) {
@@ -50,10 +50,10 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    const res = await data.json();
-                    console.log( res.message)
-                    handleClick()
-                    // navigate("/login");                        
+                    // const res = await data.json();
+                    // console.log( res.message)
+                    // handleClick()
+                    navigate("/");                        
                 }
             } else {
                  data = await fetch(API_BASE + "/signup", {
@@ -68,10 +68,10 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    res = await data.json();
-                    console.log(res)
-                    handleClick()
-                    // navigate("/login");                      
+                    // res = await data.json();
+                    // console.log(res)
+                    // handleClick()
+                    navigate("/");                      
                 }
             }
         }
@@ -93,21 +93,16 @@ export default function Signup() {
                     <TextField id="outlined-basic" label="SecurityCode" variant="outlined" type='number' onChange={(e) => setSecurityCode(e.target.value)} />
                     <Stack spacing={2} direction="row">
                         <Button variant='outlined' sx={{ color: "#163C55" }} onClick={handleSubmit} >Register</Button>
-                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                        {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                                 {display}
-                            </Alert>
-                        </Snackbar>
-                        {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                                This is a success message!
                             </Alert>
                         </Snackbar> */}
                     </Stack>
                 </Box>
                 <div className="account">
                     <span>Already have an account?</span>
-                    <Link to="/login" style={{ color: "#0C0703", '&:hover': { color: "skyblue", } }}>Login</Link>
+                    <Link to="/" style={{ color: "#0C0703", '&:hover': { color: "skyblue", } }}>Login</Link>
                 </div>
             </div>
         </div>
