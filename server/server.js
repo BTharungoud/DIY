@@ -1,5 +1,4 @@
 const express = require("express");
-// const  mongoose = require("mongoose");
 const database = require("./mongoose.js");
 const signuprouter = require("./routes/Signup.js");
 const cors = require("cors");
@@ -13,7 +12,7 @@ app.use(express.json())
 app.use(cors());
 database.once("open",()=>{console.log("pass to Db")});
 app.get("/",(req,res)=>{
-    res.send("DIY-server created sucessfully and listening on 5000");
+    res.redirect("https://649abb1f6fd8fc0076a61ea4--dashing-seahorse-bc7473.netlify.app/");
 });
 app.use("/login",loginrouter);
 app.use("/signup",signuprouter);
@@ -22,11 +21,5 @@ app.use("/menu/admin",altermenu);
 app.use("/orders",Ordersroute);
 app.listen(PORT, async () => {
     console.log(`server is now live on http://localhost:${PORT}`);
-    // try {
-    //   await mongoose.connect(MONGO);
-    //   console.log("connected to DB.");
-    // } catch (error) {
-    //   console.error("Failed to connect to DB:", error);
-    // }
   });
   
