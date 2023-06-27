@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import "./Menupage.css"
 import Navbar from '../Navbar/Navbar';
-const API_BASE = "http://localhost:5000"
+const API_BASE = "https://diy-service.onrender.com"
 
 export default function Menupage() {
     const [menu, setMenu] = useState([]);

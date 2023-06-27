@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import "./Pages.css";
 import { Link, useNavigate } from 'react-router-dom';
-import { red } from '@mui/material/colors';
 
 
 export default function Login() {
@@ -13,7 +12,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [errormsg, setErrormsg] = useState("");
     const navigate = useNavigate();
-    const API_BASE = "http://localhost:5000"
+    const API_BASE = "https://diy-service.onrender.com"
 
     const handleLogin = async () => {
         if (!username || !password) { setErrormsg("Enter all the fields") }

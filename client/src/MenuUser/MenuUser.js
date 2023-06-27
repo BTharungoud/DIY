@@ -3,19 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import "./MenuUser.css"
 import UserNavbar from '../Navbar/UserNavbar';
 import { Button } from '@mui/material';
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://diy-service.onrender.com";
 
 export default function MenuUser() {
     const [usermenu, setUsermenu] = useState([]);
     const [selected, setSelected] = useState(false);
     const [total, setTotal] = useState(0);
-    // const [quantity, setQuantity] = useState([]);
 
     const navigate = useNavigate();
-
-    // useEffect(() => {
-
-    // }, [usermenu])
 
     const getUserMenu = async () => {
        const res = await fetch(API_BASE + "/menu/users",{

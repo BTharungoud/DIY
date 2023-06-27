@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Pages.css";
-import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -18,7 +17,7 @@ export default function Signup() {
     const [securityCode, setSecurityCode] = useState(0);
     const [errormsg, setErrormsg] = useState("");
 
-    const API_BASE = "http://localhost:5000";
+    const API_BASE = "https://diy-service.onrender.com";
     const navigate = useNavigate();
     let data ={};
     const handleSubmit = async () => {

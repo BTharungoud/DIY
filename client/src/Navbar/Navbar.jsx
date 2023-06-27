@@ -71,7 +71,7 @@ function Navbar(props) {
   }
   if(item=='Logout'){
     localStorage.clear()
-    navigate('/login')
+    navigate('/')
   }
   }
 
@@ -138,5 +138,3 @@ Navbar.propTypes = {
   window: PropTypes.func,
 };
 export default Navbar;
-
-// export default DrawerAppBar;

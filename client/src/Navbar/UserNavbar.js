@@ -16,7 +16,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {  useNavigate } from 'react-router-dom';
 import "./Navbar.css"
-// import logo from '../images/insurance.jpg'
 
 
 const drawerWidth = 240;
@@ -45,7 +44,6 @@ function UserNavbar(props) {
     }}
     >
       <Typography variant="h6" sx={{ my: 2 }}>
-        {/* <img src={logo} alt='no'/> */}
       </Typography>
       <Divider />
       <List>
@@ -77,7 +75,7 @@ function UserNavbar(props) {
   }
   if(item=='Logout'){
     localStorage.clear()
-    navigate('/login')
+    navigate('/')
   }
   }
 
@@ -102,7 +100,6 @@ function UserNavbar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            {/* <img src={logo} style={{width:'60px',height:'60px',marginTop:'10px'}} alt='no'/>  */}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (

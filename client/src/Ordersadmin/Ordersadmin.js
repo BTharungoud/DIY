@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar.jsx';
 import "./Ordersadmin.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://diy-service.onrender.com";
 
 export default function Ordersadmin() {
   const [orders, setOrders] = useState([]);
@@ -38,7 +38,6 @@ export default function Ordersadmin() {
 
   return (
     <div className='Ordersadmin'>
-      {/* <Navbar /> */}
       <div className='datefilter'>
           <h4>Filter Orders by Date:</h4>
           <input
