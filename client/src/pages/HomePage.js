@@ -6,14 +6,7 @@ const HomePage = () => {
   const containerStyle = {
     backgroundImage: "url('https://t4.ftcdn.net/jpg/01/98/50/63/360_F_198506301_zS7IDI4YU7kW0zFVagjTwl8AVI7lZvjP.jpg')",
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    // height: '100%',
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // padding: '16px',
-    // color: 'white',
+    backgroundRepeat: 'no-repeat'
   };
 
   return (

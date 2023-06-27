@@ -1,25 +1,3 @@
-// import React, { useState } from "react";
-// import "./Navbar.css"
-
-// function Navbar() {
-
-//   return (
-//     <>
-//     <div className="Navbarparent">
-//     <nav class="Navbar">
-//         <a href='/' class="navbar-link">Home</a>
-//         <a href='/register' class="navbar-link">Signup</a>
-//         <a href='/login' class="navbar-link">Login</a>
-//         <a href='/menuAdmin' class="navbar-link">Menu</a>
-//         <a href="/usermenu" class="navbar-link">Usermenu</a>
-//         <a href="/Userorder" className="navbar-link">Userorder</a>
-//     </nav>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Navbar;
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -37,7 +15,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {  useNavigate } from 'react-router-dom';
-// import logo from '../images/insurance.jpg'
 
 
 const drawerWidth = 240;
@@ -55,20 +32,25 @@ function Navbar(props) {
   
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} 
+    sx={{
+      textAlign: 'center',
+      backgroundImage: "url('https://t4.ftcdn.net/jpg/01/98/50/63/360_F_198506301_zS7IDI4YU7kW0zFVagjTwl8AVI7lZvjP.jpg')",
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      height : "100vh",
+      color : "#F8EBE3"
+    }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
-        {/* <img src={logo} alt='no'/> */}
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
            <ListItemButton
-  sx={{ textAlign: 'center' }}
- 
-  
-
->
+  sx={{ textAlign: 'center' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -96,7 +78,7 @@ function Navbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: '#4056A1' }}>
+      <AppBar component="nav" sx={{ backgroundColor: { xs: 'transparent', sm: 'transparent', md: 'transparent', lg: 'transparent', xl: 'transparent' } }}>
         <Toolbar>
           <IconButton
             color="inherit"

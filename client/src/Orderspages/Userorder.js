@@ -16,7 +16,7 @@ export default function Userorder() {
     <div className='QRcode'>
         <img src="https://i.postimg.cc/Gmnn9JV1/Patym-QRscanner.png"></img>
     </div>
-    <h5>Your total amount = ₹{total}/-</h5>
+    <h5>Your total amount = ₹{total||0}/-</h5>
     <h5>After completing the payment Click the Button</h5>
     <Stack spacing={2} direction="row">
             <Button variant='outlined' sx={{color:"#163C55"}} onClick={handlesubmit} >Submit</Button>

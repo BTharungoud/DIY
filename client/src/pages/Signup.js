@@ -16,27 +16,14 @@ export default function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [securityCode, setSecurityCode] = useState(0);
+    const [errormsg, setErrormsg] = useState("");
+
     const API_BASE = "http://localhost:5000";
-    // const [open, setOpen] = useState(false);
     const navigate = useNavigate();
     let data ={};
-    // let res ;
-    // const display = "print the text"
-    // const handleClick = () => {
-    //     setOpen(true);
-    // };
-
-    // const handleClose = (event, reason) => {
-    //     if (reason === 'clickaway') {
-    //         return;
-    //     }
-
-    //     setOpen(false);
-    // };
-
     const handleSubmit = async () => {
         if (!username || !password) {
-
+            setErrormsg("plz fill mandatory fields")
         } else {
             if (!securityCode) {
                  data = await fetch(API_BASE + "/signup", {
@@ -50,9 +37,6 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    // const res = await data.json();
-                    // console.log( res.message)
-                    // handleClick()
                     navigate("/");                        
                 }
             } else {
@@ -68,9 +52,6 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    // res = await data.json();
-                    // console.log(res)
-                    // handleClick()
                     navigate("/");                      
                 }
             }
@@ -88,17 +69,12 @@ export default function Signup() {
                     className='formclass'
                 >
                     <TextField id="outlined-basic" label="Username" variant="outlined" type='String' required={true} onChange={(e) => setUsername(e.target.value)} />
-                    {!username && <p style={{ color: 'red' }}>Username required</p>}
                     <TextField id="outlined-basic" label="Password" variant="outlined" type="password" required={true} onChange={(e) => setPassword(e.target.value)} />
                     <TextField id="outlined-basic" label="SecurityCode" variant="outlined" type='number' onChange={(e) => setSecurityCode(e.target.value)} />
                     <Stack spacing={2} direction="row">
                         <Button variant='outlined' sx={{ color: "#163C55" }} onClick={handleSubmit} >Register</Button>
-                        {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                                {display}
-                            </Alert>
-                        </Snackbar> */}
                     </Stack>
+                    <p style={{color:"red"}}>{errormsg}</p>
                 </Box>
                 <div className="account">
                     <span>Already have an account?</span>

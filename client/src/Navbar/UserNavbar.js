@@ -34,7 +34,16 @@ function UserNavbar(props) {
   
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{
+      textAlign: 'center',
+      backgroundImage: "url('https://t4.ftcdn.net/jpg/01/98/50/63/360_F_198506301_zS7IDI4YU7kW0zFVagjTwl8AVI7lZvjP.jpg')",
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      height : "100vh",
+      color : "#F8EBE3"
+    }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         {/* <img src={logo} alt='no'/> */}
       </Typography>
@@ -75,7 +84,9 @@ function UserNavbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: 'transparent' }}>
+      <AppBar component="nav"
+       sx={{ backgroundColor: { xs: 'transparent', sm: 'transparent', md: 'transparent', lg: 'transparent', xl: 'transparent' } }}
+       >
         <Toolbar>
           <IconButton
             color="inherit"

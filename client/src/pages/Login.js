@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import "./Pages.css";
 import { Link, useNavigate } from 'react-router-dom';
+import { red } from '@mui/material/colors';
 
 
 export default function Login() {
@@ -88,7 +89,7 @@ export default function Login() {
                         <Button variant='outlined' sx={{ color: "#163C55" }} onClick={handleLogin} >Login</Button>
                     </Stack>
                 </Box>
-                <p>{errormsg}</p>
+                <p style={{color:"red"}}>{errormsg}</p>
                 <div className="account">
                     <span>Don't have an account?</span>
                     <Link to="/register" style={{ color: "#0C0703", '&hover': { color: "skyblue" } }}>Register</Link>
