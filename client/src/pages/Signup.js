@@ -58,7 +58,8 @@ export default function Signup() {
     }
 
     return (
-        <div className="pagebox">
+    <div style={{display:'flex',justifyContent:"center",alignItems:"center"}} className='Loginpage'>
+        <div  className="pagebox">
             <div className='signupcontainer'>
                 <h3>Enter your details for Signup</h3>
                 <Box component="form"
@@ -69,7 +70,7 @@ export default function Signup() {
                 >
                     <TextField id="outlined-basic" label="Username" variant="outlined" type='String' required={true} onChange={(e) => setUsername(e.target.value)} />
                     <TextField id="outlined-basic" label="Password" variant="outlined" type="password" required={true} onChange={(e) => setPassword(e.target.value)} />
-                    <TextField id="outlined-basic" label="SecurityCode" variant="outlined" type='number' onChange={(e) => setSecurityCode(e.target.value)} />
+                    <TextField id="outlined-basic" label="SecurityCode" variant="outlined" type='password' onChange={(e) => setSecurityCode(e.target.value)} />
                     <Stack spacing={2} direction="row">
                         <Button variant='outlined' sx={{ color: "#163C55" }} onClick={handleSubmit} >Register</Button>
                     </Stack>
@@ -77,10 +78,11 @@ export default function Signup() {
                 </Box>
                 <div className="account">
                     <span>Already have an account?</span>
-                    <Link to="/" style={{ color: "#0C0703", '&:hover': { color: "skyblue", } }}>Login</Link>
+                    <Link to="/login" style={{ color: "#0C0703", '&:hover': { color: "skyblue", } }}>Login</Link>
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 

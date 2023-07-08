@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import "./MenuUser.css"
 import UserNavbar from '../Navbar/UserNavbar';
 import { Button } from '@mui/material';
-const API_BASE = "https://diy-service.onrender.com";
+// const API_BASE = "https://diy-service.onrender.com";
+const API_BASE = "http://localhost:5000"
 
 export default function MenuUser() {
     const [usermenu, setUsermenu] = useState([]);
     const [selected, setSelected] = useState(false);
     const [total, setTotal] = useState(0);
-
     const navigate = useNavigate();
+
+    // useEffect(()=>{
+    //     getUserMenu();
+    // })
 
     const getUserMenu = async () => {
        const res = await fetch(API_BASE + "/menu/users",{
@@ -27,7 +31,7 @@ export default function MenuUser() {
 
     const selectedmenu = async (item) => {
         const obj = usermenu.find(ele=>ele._id===item._id)
-        console.log(obj);
+        // console.log(obj);
         obj.quantity++;
         setTotal(prevTotal => prevTotal + item.itemCost);
     }
@@ -58,6 +62,13 @@ export default function MenuUser() {
                 SelectedItems : array
             })
         })
+        const res = await data.json();
+        // console.log(res.newOrder)
+        // const items = res.newOrder
+        // console.log(res.newOrder._id,res.newOrder.SelectedItems.map(item=>item.itemName));
+
+        localStorage.setItem("Order",res.newOrder._id);
+        localStorage.setItem("items",res.newOrder.SelectedItems.map(item=>item.itemName))
         navigate('/Userorder');
     }
 
@@ -65,16 +76,16 @@ export default function MenuUser() {
         <>
             <div className='Usermenu'>
                 <UserNavbar/>
-                <h4>hey, user here is the menu for the day.</h4>
+                <h4 style={{paddingLeft:"2%"}}>Hey, user here is the menu for the day.</h4>
                 <div className='userMenu'>
                     {usermenu.map((item) => (
                         <div style={{display:"flex"}}>
                         <div className={(item.quantity>=1) ? "selected" : "items"} key={item._id} onClick={() => selectedmenu(item)}>
 
-                            <div className='text' style={{ width: "85%" }}>
+                            <div className='text' style={{ width: "85%" , paddingLeft:"2%",textTransform:"capitalize" }} >
                                 {item.itemName}       cost = ₹{item.itemCost}/-
                             </div>
-                            <div className='qunatitybox'>
+                            <div className='qunatitybox' style={{paddingLeft:"10%"}}>
                                 <p style={{ fontSize: "23px" }}>Q:-</p>
                                     <p style={{ fontSize: "23px" }}>{item.quantity}</p>
                             </div>
@@ -89,7 +100,7 @@ export default function MenuUser() {
 
                 </div>
 
-                <h5 style={{ color: "white" }}>Total =₹{total}/-</h5>
+                <h5 style={{ color: "white",paddingLeft:"2%" }}>Total =₹{total}/-</h5>
                 <Button onClick={()=>submitOrder()} variant='outlined' sx={{width:"90px",marginLeft:"45%"}}>Order</Button>
             </div>
         </>
