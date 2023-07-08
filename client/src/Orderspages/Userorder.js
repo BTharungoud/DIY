@@ -12,8 +12,8 @@ export default function Userorder() {
     alert(
       `Thank you for choosing us 🥰! Your payment was successful. Collect your order.\n\n` +
       `Here are your Order Details:\n` +
-      `ID: ${order}\n` +
-      `Selected: ${items}`
+      `Order_ID: ${order}\n` +
+      `Selected_items: ${items}`
     );
   }
   return (

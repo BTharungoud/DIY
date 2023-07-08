@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "./MenuUser.css"
 import UserNavbar from '../Navbar/UserNavbar';
 import { Button } from '@mui/material';
-// const API_BASE = "https://diy-service.onrender.com";
-const API_BASE = "http://localhost:5000"
+const API_BASE = "https://diy-service.onrender.com";
 
 export default function MenuUser() {
     const [usermenu, setUsermenu] = useState([]);
@@ -31,7 +30,6 @@ export default function MenuUser() {
 
     const selectedmenu = async (item) => {
         const obj = usermenu.find(ele=>ele._id===item._id)
-        // console.log(obj);
         obj.quantity++;
         setTotal(prevTotal => prevTotal + item.itemCost);
     }
@@ -63,10 +61,6 @@ export default function MenuUser() {
             })
         })
         const res = await data.json();
-        // console.log(res.newOrder)
-        // const items = res.newOrder
-        // console.log(res.newOrder._id,res.newOrder.SelectedItems.map(item=>item.itemName));
-
         localStorage.setItem("Order",res.newOrder._id);
         localStorage.setItem("items",res.newOrder.SelectedItems.map(item=>item.itemName))
         navigate('/Userorder');
