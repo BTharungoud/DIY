@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cors());
 database.once("open",()=>{console.log("pass to Db")});
 app.get("/",(req,res)=>{
-    res.redirect("https://649abb1f6fd8fc0076a61ea4--dashing-seahorse-bc7473.netlify.app/");
+    res.redirect("https://dashing-seahorse-bc7473.netlify.app/");
 });
 app.use("/login",loginrouter);
 app.use("/signup",signuprouter);
