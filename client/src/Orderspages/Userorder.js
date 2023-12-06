@@ -7,8 +7,6 @@ export default function Userorder() {
   const handlesubmit = () => {
     const order = localStorage.getItem("Order")
     const items = localStorage.getItem("items")
-    // const selected = order.SelectedItems;
-    // console.log(order,id,selected);
     alert(
       `Thank you for choosing us 🥰! Your payment was successful. Collect your order.\n\n` +
       `Here are your Order Details:\n` +

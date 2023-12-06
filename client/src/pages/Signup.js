@@ -36,7 +36,7 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    navigate("/");                        
+                    navigate("/login");                        
                 }
             } else {
                  data = await fetch(API_BASE + "/signup", {
@@ -51,7 +51,10 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    navigate("/");                      
+                    navigate("/login");                      
+                }
+                else{
+                    setErrormsg("wrong security code.")
                 }
             }
         }

@@ -22,7 +22,6 @@ const drawerWidth = 240;
 const navItems = ['Menu', 'payments', 'Logout'];
 
 function UserNavbar(props) {
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -51,9 +50,6 @@ function UserNavbar(props) {
           <ListItem key={item} disablePadding>
            <ListItemButton
   sx={{ textAlign: 'center' }}
- 
-  
-
 >
               <ListItemText primary={item} />
             </ListItemButton>
@@ -62,9 +58,7 @@ function UserNavbar(props) {
       </List>
     </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
-  const handleitemclick=(item)=>{
+  const handleitemclick = (item)=>{
     console.log(item)
   if(item=='Menu'){
     navigate('/usermenu')
@@ -74,12 +68,15 @@ function UserNavbar(props) {
 
   }
   if(item=='Logout'){
-    localStorage.clear()
-    navigate('/')
-  }
-  }
+    if (window!==undefined&& window.confirm("Are you sure you want to Logout .")) {
+      console.log('User confirmed logout');
+      localStorage.clear();
+      navigate('/');
+  }}}
 
   return (
+  <>
+    
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav"
@@ -112,7 +109,6 @@ function UserNavbar(props) {
       </AppBar>
       <Box component="nav">
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -132,6 +128,7 @@ function UserNavbar(props) {
         <Typography></Typography>
       </Box>
     </Box>
+  </>
   );
 }
 

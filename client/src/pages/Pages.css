@@ -28,7 +28,6 @@
     align-items: center;
     flex-direction: column;
     color:  #0C0703;
-
 }
 .formclass{
   display: flex;
@@ -48,10 +47,25 @@
 .homepage{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    background-repeat: repeat !important;
     position: relative;
     color: #F8EBE3;
+}
+.NavBarDiv{
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    justify-content: flex-end;
+    color: #F8EBE3;
+}
+.NavBarDiv>*{
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #F8EBE3;
+    border-radius: 15px;
+
 }
 #block1{
     display: flex;
@@ -60,11 +74,28 @@
 }
 .homepagecotainer{
     display: flex;
-    max-width: 90%;
-    max-height: 60%;
-    margin-left: 5%;
+    max-height: 65%;
+    margin: 0 1% 0 2%;
     padding: 2%;
     border: 2px solid #F8EBE3;
     border-radius: 20px;
     color: #F8EBE3;
+}
+.homepagecotainer>*{
+    width: 50%;
+    height: auto;
+}
+@media screen and (max-width:900px) {
+    .homepagecotainer{
+        flex-direction: column;
+        max-height: fit-content;
+    }
+    .homepagecotainer>*{
+        width: 100%;
+        height: auto;
+    }
+    .homepage{
+       width: 100%;
+       height: fit-content;
+    }
 }

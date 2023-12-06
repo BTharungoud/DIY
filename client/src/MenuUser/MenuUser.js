@@ -65,7 +65,6 @@ export default function MenuUser() {
         localStorage.setItem("items",res.newOrder.SelectedItems.map(item=>item.itemName))
         navigate('/Userorder');
     }
-
     return (
         <>
             <div className='Usermenu'>
@@ -84,7 +83,7 @@ export default function MenuUser() {
                                     <p style={{ fontSize: "23px" }}>{item.quantity}</p>
                             </div>
                         </div>
-                        <Button variant='contained' style={{margin:"10px",marginTop:"0",borderRadius:"50px",height:"50px",width:"30px"}} onClick={()=>removeItem(item)} >-</Button>
+                        <Button variant='contained' style={{margin:"10px",marginTop:"0",borderRadius:"50px",height:"50px",width:"30px"}} disabled={(item.quantity>=1) ?false:true} onClick={()=>removeItem(item)} >-</Button>
                         </div>
                     ))}
                     {usermenu.length === 0 ? (
@@ -93,7 +92,6 @@ export default function MenuUser() {
                     }
 
                 </div>
-
                 <h5 style={{ color: "white",paddingLeft:"2%" }}>Total =₹{total}/-</h5>
                 <Button onClick={()=>submitOrder()} variant='outlined' sx={{width:"90px",marginLeft:"45%"}}>Order</Button>
             </div>

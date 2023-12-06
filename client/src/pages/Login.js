@@ -61,9 +61,9 @@ export default function Login() {
     }
     return (
     <div className='Loginpage'>
-        <div style={{padding:"20px", display: "flex", color:"#F8EBE3"}}>
-                <nav style={{ padding: "10px", cursor: "pointer", marginLeft: "80%", marginRight: "2%", textDecorationLine: "underline" }} onClick={() => { navigate("/login") }}>Login</nav>
-                <nav style={{ border: "2px solid #F8EBE3", borderRadius: "20px", padding: "10px", cursor: "pointer" }} onClick={() => { navigate("/") }}>HomePage</nav>
+        <div className='NavBarDiv'>
+                <nav onClick={() => { navigate("/login") }}>Login</nav>
+                <nav onClick={() => { navigate("/") }}>HomePage</nav>
         </div>
         <div className="pagebox">
             <div className='signupcontainer'>

@@ -21,7 +21,6 @@ const drawerWidth = 240;
 const navItems = ['Menu', 'Orders', 'Logout'];
 
 function Navbar(props) {
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -59,9 +58,7 @@ function Navbar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
   const handleitemclick=(item)=>{
-    console.log(item)
   if(item=='Menu'){
     navigate('/menuAdmin')
   }
@@ -70,8 +67,11 @@ function Navbar(props) {
 
   }
   if(item=='Logout'){
-    localStorage.clear()
-    navigate('/')
+    if (window.confirm('Are you sure you want to Logout?')) {
+      console.log('User confirmed logout');
+      localStorage.clear();
+      navigate('/');
+  }
   }
   }
 
@@ -94,7 +94,6 @@ function Navbar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            {/* <img src={logo} style={{width:'60px',height:'60px',marginTop:'10px'}} alt='no'/>  */}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
@@ -107,7 +106,6 @@ function Navbar(props) {
       </AppBar>
       <Box component="nav">
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}

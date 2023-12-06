@@ -100,13 +100,13 @@ export default function Menupage() {
             </div>
 
             <div className="addPopup" onClick={() => setPopupActive(true)}>Add new item</div>
-		
             {popupActive ? (
                 <div className="popup">
                     <div className="closePopup" onClick={() => setPopupActive
                     (false)}>x</div>
                         <div className="content">
                             <h3>Add Item</h3>
+                            <h6>Ex:- "ItemName"@"ItemCost".</h6>
                             <input type="text" 
                             className='add-item-input'
                             onChange={e => setNewMenu(e.target.value)} 
