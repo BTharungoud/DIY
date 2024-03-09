@@ -40,10 +40,10 @@ export default function Login() {
                     password: password,
                 })
             })
-            const res = await data.json();
             await msgToast(data);
-            if (res.token) {
+            if (data.token) {
                 setInterval(()=>{
+                    const res = data.json()
                     localStorage.setItem("token", res.token)
                     navigate("/menuAdmin");
                 },2000)

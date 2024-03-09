@@ -16,7 +16,7 @@ export default function Signup() {
 
     async function msgToast(res){
         const data = await res.json();
-        if(res.status == (200 || 201)){
+        if(res.status === (200 || 201)){
             if(res.message){
                 toast.success(`${data.message}`)
             }else{
@@ -28,7 +28,6 @@ export default function Signup() {
     }
     const API_BASE = "https://diy-service.onrender.com";
     const navigate = useNavigate();
-    let data ={};
     const handleSubmit = async () => {
         if (!username || !password) {
             setErrormsg("plz fill mandatory fields")
