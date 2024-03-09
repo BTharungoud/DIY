@@ -5,11 +5,8 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Pages.css";
-import MuiAlert from '@mui/material/Alert';
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export default function Signup() {
     const [username, setUsername] = useState("");
@@ -17,6 +14,18 @@ export default function Signup() {
     const [securityCode, setSecurityCode] = useState(0);
     const [errormsg, setErrormsg] = useState("");
 
+    async function msgToast(res){
+        const data = await res.json();
+        if(res.status == (200 || 201)){
+            if(res.message){
+                toast.success(`${data.message}`)
+            }else{
+                toast.success(`Welcome ${data.username} to the DIY App. find your meal.`)
+            }
+        }else{
+            toast.error(`${data.message}`)
+        }
+    }
     const API_BASE = "https://diy-service.onrender.com";
     const navigate = useNavigate();
     let data ={};
@@ -25,7 +34,7 @@ export default function Signup() {
             setErrormsg("plz fill mandatory fields")
         } else {
             if (!securityCode) {
-                 data = await fetch(API_BASE + "/signup", {
+                const data = await fetch(API_BASE + "/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -36,10 +45,16 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    navigate("/login");                        
+                    await msgToast(data)
+                    setTimeout(()=>{
+                        if(data.status === (200||201))navigate("/login")                    
+                    },2000)
                 }
             } else {
-                 data = await fetch(API_BASE + "/signup", {
+                if(securityCode !== 7235){setErrormsg("plz enter Admin code(securityCode) correctly")}else{
+
+                }
+                const data = await fetch(API_BASE + "/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -51,7 +66,10 @@ export default function Signup() {
                     })
                 })
                 if (data) {
-                    navigate("/login");                      
+                    await msgToast(data);
+                    setTimeout(()=>{
+                        if(data.status === (200||201))navigate("/login")                    
+                    },2000)                                       
                 }
                 else{
                     setErrormsg("wrong security code.")
@@ -62,6 +80,7 @@ export default function Signup() {
 
     return (
     <div style={{display:'flex',justifyContent:"center",alignItems:"center"}} className='Loginpage'>
+        <ToastContainer/>
         <div  className="pagebox">
             <div className='signupcontainer'>
                 <h3>Enter your details for Signup</h3>
