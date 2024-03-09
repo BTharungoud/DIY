@@ -55,6 +55,9 @@ export default function Signup() {
                     navigate("/login")                       
                 }
             } else {
+                if(securityCode !== 7235){setErrormsg("plz enter Admin code(securityCode) correctly")}else{
+                    
+                }
                 const data = await fetch(API_BASE + "/signup", {
                     method: "POST",
                     headers: {
